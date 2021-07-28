@@ -1,14 +1,17 @@
 import React from 'react';
+import { deletePost } from '../actions/actions';
 
-export default ({ post }) => {
+const Post = ({ post }) => {
    return (
-      <li>
+      <li key={post.id}>
          <div className="data-chat">
             <span className="username">{post.username}</span>
             <span className="date">{post.date}</span>
-            <span className="delete">Удалить</span>
+            <span className="delete" onClick={() => deletePost(post.id)}>Удалить</span>
          </div>
-         <p className="text">{post.text}</p> 
+         <p className="text">{post.text}</p>
       </li>
    )
 }
+
+export default Post;

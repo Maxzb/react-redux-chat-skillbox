@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { createPost } from '../actions/actions';
+import { deletePost } from '../actions/actions';
 
 class AddItem extends React.Component {
    constructor(props) {
@@ -6,7 +9,8 @@ class AddItem extends React.Component {
       this.state={
          username: '',
          text: '',
-         date: new Date().toLocaleString()
+         date: '',
+         id: ''
       }
    }
 
@@ -15,6 +19,16 @@ class AddItem extends React.Component {
 
       const { username, text } = this.state;
 
+      if (!username.trim()) {
+         alert('Введите свое имя!');
+         return;
+      }
+      else if (!text.trim()) {
+         alert('Введите сообщение!');
+         return;
+      }
+
+
       const newPost = {
          username,
          text,
@@ -22,6 +36,7 @@ class AddItem extends React.Component {
          id: Date.now().toString()
       }
 
+      this.props.createPost(newPost)
       console.log(newPost);
 
       this.setState(() => ({
@@ -60,4 +75,15 @@ class AddItem extends React.Component {
    }
 }
 
-export default AddItem;
+const mapDispatchToProps = (dispatch) => {
+   return {
+      createPost: (post) => dispatch(createPost(post)),
+      deletePost: (id) => dispatch(deletePost(id))
+   }
+}
+
+/* const mapDispatchToProps =  {
+   createPost
+} */
+
+export default connect(null, mapDispatchToProps)(AddItem);

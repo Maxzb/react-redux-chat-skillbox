@@ -99,6 +99,11 @@ h1 span {
    text-align: left;
 }
 
+.empty-posts {
+   font-size: 16px;
+   color: rgba(47, 54, 64, .4);
+}
+
 label {
    margin: 10px 0 5px;
    text-align: left;
@@ -144,4 +149,8 @@ ul li:hover .delete {
    right: 10px;
    bottom: 8px;
    transition-duration: 0.2s;
+}
+
+.checked {
+   background-color: red;
 }
