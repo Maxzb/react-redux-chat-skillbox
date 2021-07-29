@@ -7,7 +7,7 @@ const Posts = ({ syncPosts }) => {
       return <p className="empty-posts">Пока сообщений нет</p>
    }
    return (
-      syncPosts.map(post => <Post post={post} key={post.id} />)
+      syncPosts.map((post, i) => <Post post={post} key={i} idx={i} />)
    )
 }
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { createPost } from '../actions/actions';
-import { deletePost } from '../actions/actions';
 
 class AddItem extends React.Component {
    constructor(props) {
@@ -13,6 +12,11 @@ class AddItem extends React.Component {
          id: ''
       }
    }
+
+   /* componentDidMount() {
+      const items = localStorage.getItem("items");
+      if (items) this.setState({ items: JSON.parse(items) });
+   } */
 
    submitHandler = ev => {
       ev.preventDefault();
@@ -37,7 +41,6 @@ class AddItem extends React.Component {
       }
 
       this.props.createPost(newPost)
-      console.log(newPost);
 
       this.setState(() => ({
          username: '',
@@ -75,15 +78,8 @@ class AddItem extends React.Component {
    }
 }
 
-const mapDispatchToProps = (dispatch) => {
-   return {
-      createPost: (post) => dispatch(createPost(post)),
-      deletePost: (id) => dispatch(deletePost(id))
-   }
-}
-
-/* const mapDispatchToProps =  {
+const mapDispatchToProps =  {
    createPost
-} */
+}
 
 export default connect(null, mapDispatchToProps)(AddItem);

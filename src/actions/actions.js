@@ -8,9 +8,9 @@ export function createPost(post) {
    }
 }
 
-export function deletePost(post) {
+export function deletePost(key) {
    return {
       type: DELETE_POST,
-      payload: post
+      payload: key
    }
 }
